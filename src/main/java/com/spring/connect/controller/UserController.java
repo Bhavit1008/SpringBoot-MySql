@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -24,4 +25,11 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/user/{id}")
+    @ResponseBody
+    public User findUserById(@PathVariable("id") int userId){
+        Optional<User> userResponse =  userRepository.findById(userId);
+        User user = userResponse.get();
+        return user;
+    }
 }
