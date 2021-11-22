@@ -22,6 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/user")
+    //findAll users by fun
     public List<User> getUsers(){
         return userRepository.findAll();
     }
@@ -29,6 +30,7 @@ public class UserController {
     @GetMapping("/user/{id}")
     @ResponseBody
     public User findUserById(@PathVariable("id") int userId){
+        //findById fun called
         Optional<User> userResponse =  userRepository.findById(userId);
         User user = userResponse.get();
         return user;
